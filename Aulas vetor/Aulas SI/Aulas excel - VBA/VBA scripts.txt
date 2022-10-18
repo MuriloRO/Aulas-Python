@@ -1,0 +1,137 @@
+Sub hipotenusa()
+Dim cat1 As Single
+Dim cat2 As Single
+Dim hip As Single
+
+    cat1 = Val(InputBox("Escreva o valor do cateto 1:", "Cateto 1"))
+    cat2 = Val(InputBox("Escreva o valor do cateto 2:", "Cateto 2"))
+    hip = Sqr(cat1 ^ 2 + cat2 ^ 2)
+    
+    MsgBox "A medida da hipotenusa é : " & hip
+    
+End Sub
+
+Sub ParImpar()
+
+Dim i As Integer
+Dim n As Integer
+Dim aux As Single
+    
+
+n = 7
+For i = 2 To n
+    aux = Cells(i, 1)
+    If (aux Mod 2 = 0) Then
+    Cells(i, 2) = "PAR"
+    Else
+    Cells(i, 2) = "IMPAR"
+    End If
+Next i
+
+End Sub
+Sub Preencher()
+
+Counter = 2
+
+While (Cells(Counter, 3) = "")
+    Cells(Counter, 3) = "Joao While"
+    Counter = Counter + 1
+Wend
+
+
+End Sub
+
+Sub Expectativa()
+
+Dim Counter As Integer
+Dim n As Integer
+Dim A As Single
+Dim D As Single
+Dim Dem As Single
+
+
+n = Val(InputBox("Escreva o valor de N:", "N"))
+
+For Counter = 1 To n
+
+    A = Cells(Counter, 1)
+    D = Cells(Counter, 4)
+    
+    Dem = (Cells(Counter, 1) ^ 2) + (2 * (Cells(Counter, 2))) - (Cells(Counter, 3))
+    Cells(Counter, 4) = Dem
+    If (Dem > 22) Then
+    Cells(Counter, 5) = "expectativa positiva"
+    Else
+    Cells(Counter, 5) = "expectativa negativa"
+    End If
+    
+    
+Next Counter
+    
+    MsgBox ("ultimo preço: " & A) & (", ultima demanda: " & D)
+    
+
+    
+End Sub
+Sub Divisores()
+Dim x As Single
+Dim i As Integer
+Dim n As Integer
+Dim aux As Single
+
+
+
+i = 1
+x = 2660341
+
+For j = 2 To x - 1
+
+    If x Mod (j) = 0 Then
+        Cells(i, 1) = j
+        i = i + 1
+        aux = j
+    End If
+    
+Next j
+
+    MsgBox ("ultimo divisor: " & aux)
+
+End Sub
+
+Sub mediasN()
+
+Dim n As Integer
+Dim linha As Integer
+Dim coluna As Integer
+Dim colunas_pra_escrever As Integer
+
+Dim soma As Integer
+Dim media As Double
+Dim menor As Single
+
+
+n = Val(InputBox("Escreva o valor de n:", "n"))
+
+colunas_pra_escrever = n + 1
+
+menor = Cells(1, colunas_pra_escrever)
+
+For linha = 1 To n
+    soma = 0
+    For coluna = 1 To n
+        soma = soma + Cells(linha, coluna)
+        media = (soma / n)
+        Cells(linha, colunas_pra_escrever) = media
+    Next coluna
+
+    
+    If (Cells(linha, colunas_pra_escrever) < menor) Then
+        menor = Cells(linha, colunas_pra_escrever)
+    End If
+Next linha
+
+MsgBox ("A menor media é: " & menor)
+
+
+
+End Sub
